@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="scheduling-tasks" />
+        <module name="export-import" />
+        <module name="file-upload-download" />
+        <module name="page-plugin" />
+        <module name="project-formwork" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="export-import" target="1.8" />
+      <module name="file-upload-download" target="1.8" />
+      <module name="page-plugin" target="1.8" />
+      <module name="project-formwork" target="1.8" />
+      <module name="scheduling-tasks" target="1.8" />
+      <module name="test-something" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="export-import" options="-parameters" />
+      <module name="file-upload-download" options="-parameters" />
+      <module name="page-plugin" options="-parameters" />
+      <module name="project-formwork" options="-parameters" />
+      <module name="scheduling-tasks" options="-parameters" />
+      <module name="test-something" options="-parameters" />
+    </option>
+  </component>
+</project>

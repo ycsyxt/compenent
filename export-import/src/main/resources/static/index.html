@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel导入和导出</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <table>
+            <tr><td></td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="导入" /></td></tr>
+        </table>
+    </form>
+
+    <hr>
+    <a href="/download"><button>导出</button></a>
+</body>
+</html>

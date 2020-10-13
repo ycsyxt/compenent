@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.chnsys.exportimport.mapper.TestTableMapper">
+
+    <resultMap type="TestTable" id="TestTableResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="gender"    column="gender"    />
+    </resultMap>
+
+    <sql id="selectTestTableVo">
+        select id, name, gender from test_table
+    </sql>
+
+    <select id="selectTestTableList" parameterType="TestTable" resultMap="TestTableResult">
+        <include refid="selectTestTableVo"/>
+        <where>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+        </where>
+    </select>
+
+    <select id="selectTestTableById" parameterType="Long" resultMap="TestTableResult">
+        <include refid="selectTestTableVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertTestTable" parameterType="TestTable" useGeneratedKeys="true" keyProperty="id">
+        insert into test_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="gender != null and gender != ''">gender,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="gender != null and gender != ''">#{gender},</if>
+        </trim>
+    </insert>
+
+    <update id="updateTestTable" parameterType="TestTable">
+        update test_table
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="gender != null and gender != ''">gender = #{gender},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTestTableById" parameterType="Long">
+        delete from test_table where id = #{id}
+    </delete>
+
+    <delete id="deleteTestTableByIds" parameterType="String">
+        delete from test_table where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
